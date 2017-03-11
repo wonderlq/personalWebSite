@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> 登录</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+          name="viewport">
+
+    <link rel="stylesheet" href="css/test.css"/>
+</head>
+<body>
+<div class="login-box">
+    <div class="login-pic-input">
+        <div class="lan-login">
+            <div class="hand"></div>
+            <div class="hand hand-r"></div>
+            <div class="arms">
+                <div class="arm"></div>
+                <div class="arm arm-r"></div>
+            </div>
+        </div>
+        <div class="login-inputs">
+            <input name="userName"><br/><br/>
+            <input name="passWord" id="password">
+        </div>
+    </div>
+</div>
+<div class="picture1"></div>
+
+<script src="plugin/jQuery/jquery-2.2.3.min.js"></script>
+</body>
+<script style="text/script">
+    var $password = $('#password'),
+            $lan_login = $('.lan-login');
+
+    $password.on('focus', function() {
+        $lan_login.addClass('password');
+    }).on('blur', function() {
+        $lan_login.removeClass('password');
+    });
+
+</script>
+</html>
