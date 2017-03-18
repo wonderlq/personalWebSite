@@ -1,4 +1,4 @@
-package com.website.learn.web.controller;
+package com.website.learn.web.controller.base;
 
 
 import com.website.learn.web.result.JsonResult;

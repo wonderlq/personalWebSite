@@ -1,8 +1,12 @@
 package com.website.learn.web.controller;
 
+import com.website.learn.bean.bo.KeyData;
+import com.website.learn.service.RsaService;
+import com.website.learn.web.controller.base.BaseController;
 import com.website.learn.web.result.JsonResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,7 +18,10 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("")
-public class PassPortController extends BaseController{
+public class PassPortController extends BaseController {
+
+    @Autowired
+    RsaService rsaService;
 
     private static final Logger logger = LoggerFactory.getLogger(PassPortController.class);
 
@@ -24,7 +31,7 @@ public class PassPortController extends BaseController{
         logger.info("create Passport Key ,time:{}",time);
         JsonResult jsonResult = new JsonResult();
         jsonResult.setCode(0);
-        jsonResult.setData("good,just for test");
+        jsonResult.setData(new KeyData(rsaService.createPublicKey(time),time));
         return jsonResult;
     }
 }

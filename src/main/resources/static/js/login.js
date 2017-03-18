@@ -31,9 +31,11 @@ $(function () {
 
         if (!name){
             showError("账号为空",$name);
+            return;
         }
         if (!password){
             showError("密码为空",$password);
+            return;
         }
 
         if($loginBtn.hasClass("disabled-login")){

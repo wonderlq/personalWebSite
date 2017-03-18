@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+    ">
+
+	<bean id="jedisPool" class="redis.clients.jedis.JedisPool">
+		<constructor-arg name="poolConfig">
+			<bean class="org.apache.commons.pool2.impl.GenericObjectPoolConfig">
+				<property name="testOnBorrow" value="true"/>
+				<property name="maxIdle" value="200"/>
+				<property name="minIdle" value="100"/>
+				<property name="maxTotal" value="500"/>
+			</bean>
+		</constructor-arg>
+		<constructor-arg name="host" value="${spring.redis.hostName}"/>
+		<constructor-arg name="port" value="${spring.redis.port}"/>
+		<constructor-arg name="timeout" value="${spring.redis.timeout}"/>
+		<constructor-arg name="password" value="${spring.redis.password}"/>
+		<constructor-arg name="database" value="${spring.redis.database}"/>
+	</bean>
+
+	<bean class="com.website.learn.util.redis.RedisAdapter">
+		<constructor-arg name="pool" ref="jedisPool"/>
+	</bean>
+</beans>
