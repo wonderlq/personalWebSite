@@ -1,0 +1,14 @@
+DROP TABLE IF EXISTS `user_info`;
+CREATE TABLE `user_info` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `password` varchar(50) NOT NULL COMMENT '密码',
+  `name` varchar(20) NOT NULL DEFAULT '' COMMENT '名字',
+  `created_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `modify_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+  `gender` tinyint(1) NOT NULL DEFAULT 0 COMMENT '性别,0-男，1-女',
+  `email` varchar(20) NOT NULL DEFAULT '' COMMENT '邮件',
+   `phoneNum` varchar(20) NOT NULL DEFAULT '' COMMENT '电话',
+  PRIMARY KEY (`id`),
+  KEY `name_pwd` (`password`,`name`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+

@@ -22,11 +22,11 @@ public abstract class BaseController {
      */
     protected Logger LOGGER = LoggerFactory.getLogger(getClass());
 
-    @ResponseBody
+    /*@ResponseBody
     @ExceptionHandler(value = Exception.class)
     public JsonResult handlerException(HttpServletRequest request, HttpServletResponse response, Exception e) {
         LOGGER.info("#### exception url = {} ####", request.getRequestURI());
         return new JsonResult(JsonResult.ResultCode.FAILED, e.getMessage());
-    }
+    }*/
 
 }

@@ -9,7 +9,7 @@ $(function () {
         $password = $('#password'),
         $code = $('#code'),
         $loginBtn = $('.btn-login'),
-        $loginTips = $('.login-tips');
+        $loginTips = $('.login-tips'), keys;
 
     //回车键绑定登录事件
     document.onkeydown = function (e) {
@@ -26,33 +26,33 @@ $(function () {
     //login处理方法
     function handlerLogin() {
         //检测是否输入完整
-       var name = $.trim( $name.val()),
-           password = $.trim($password.val());
+        var name = $.trim($name.val()),
+            password = $.trim($password.val());
 
-        if (!name){
-            showError("账号为空",$name);
+        if (!name) {
+            showError("账号为空", $name);
             return;
         }
-        if (!password){
-            showError("密码为空",$password);
+        if (!password) {
+            showError("密码为空", $password);
             return;
         }
 
-        if($loginBtn.hasClass("disabled-login")){
+        if ($loginBtn.hasClass("disabled-login")) {
             return;
         }
 
         $loginBtn.text("登录中").addClass("disabled-login");
 
         //登录请求
-        getPublicKey();
-       // $loginBtn.text("登录中").removeClass("disabled-login");
-
-        //非对称加密
-        //获取公钥
-        //加密数据
-        //发送请求
-        //
+        // $loginBtn.text("登录中").removeClass("disabled-login");
+        var keys = getPublicKey();
+        var userInfo = encryptData(keys,name,password);
+        if(sendUserInfo(userInfo)){
+            console.info("check success!");
+        }else {
+            console.info("check false!")
+        }
     }
 
 
@@ -68,5 +68,4 @@ $(function () {
         $loginTips.hide().find('em').text('');
         $('.login-form input').removeClass('error');
     }
-
 });

@@ -1,8 +1,5 @@
 package com.website.learn.bean.po;
 
-import java.security.PrivateKey;
-import java.security.PublicKey;
-
 /**
  * 公钥私钥对
  *
@@ -12,14 +9,9 @@ import java.security.PublicKey;
  */
 public class KeyPairPo {
 
-    private final String publicKey;
+    private String publicKey;
 
-    private final String privateKey;
-
-    public KeyPairPo(Builder builder) {
-        this.privateKey = builder.innerPrivateKey;
-        this.publicKey = builder.innerPublicKey;
-    }
+    private String privateKey;
 
     public String getPublicKey() {
         return publicKey;
@@ -29,22 +21,19 @@ public class KeyPairPo {
         return privateKey;
     }
 
-    public static class Builder {
-        private String innerPublicKey;
-        private String innerPrivateKey;
+    public void setPublicKey(String publicKey) {
+        this.publicKey = publicKey;
+    }
 
-        public Builder setPublicKey(String publicKey) {
-            this.innerPublicKey = publicKey;
-            return this;
-        }
+    public void setPrivateKey(String privateKey) {
+        this.privateKey = privateKey;
+    }
 
-        public Builder setPrivateKey(String privateKey) {
-            this.innerPrivateKey = privateKey;
-            return this;
-        }
+    public KeyPairPo(String publicKey, String privateKey) {
+        this.publicKey = publicKey;
+        this.privateKey = privateKey;
+    }
 
-        public KeyPairPo build() {
-            return new KeyPairPo(this);
-        }
+    public KeyPairPo() {
     }
 }

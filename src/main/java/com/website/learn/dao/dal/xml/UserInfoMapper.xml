@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.website.learn.dao.dal.mapper.UserInfoMapper">
+    <resultMap id="userInfoMapper" type="com.website.learn.bean.po.UserInfoPo">
+        <id property="id" column="id" jdbcType="INTEGER"/>
+        <result property="password" column="password" jdbcType="VARCHAR"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="createdTime" column="created_time" jdbcType="TIMESTAMP"/>
+        <result property="modifyTime" column="modify_time" jdbcType="TIMESTAMP"/>
+        <result property="gender" column="gender" jdbcType="INTEGER"/>
+        <result property="email" column="email" jdbcType="VARCHAR"/>
+        <result property="phoneNum" column="phoneNum" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="exist" resultType="com.website.learn.bean.po.UserInfoPo">
+        SELECT *
+        FROM user_info
+        WHERE name =#{name} and password = #{password} limit 1
+    </select>
+
+    <insert id="saveNewUser"></insert>
+</mapper>

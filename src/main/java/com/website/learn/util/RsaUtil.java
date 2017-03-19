@@ -36,7 +36,7 @@ public class RsaUtil {
     public static final String PUBLIC_KEY = "public_key";
     public static final String PRIVATE_KEY = "private_key";
 
-    public static final int KEY_SIZE = 2048;
+    public static final int KEY_SIZE = 1024;
 
     public static final String PLAIN_TXT = "My Conquest is the Sea of Stars";
 

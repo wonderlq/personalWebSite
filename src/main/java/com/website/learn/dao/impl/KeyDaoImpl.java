@@ -2,7 +2,6 @@ package com.website.learn.dao.impl;
 
 import com.alibaba.dubbo.common.utils.StringUtils;
 import com.alibaba.fastjson.TypeReference;
-import com.sun.org.apache.regexp.internal.RE;
 import com.website.learn.bean.po.KeyPairPo;
 import com.website.learn.constant.ValueConstant;
 import com.website.learn.dao.KeyDao;
@@ -34,6 +33,6 @@ public class KeyDaoImpl implements KeyDao {
         if (StringUtils.isEmpty(keyCache)){
             return null;
         }
-        return JsonConverter.parse(keyCache, new TypeReference<KeyPairPo>() {});
+        return JsonConverter.parse(keyCache,new TypeReference<KeyPairPo>(){});
     }
 }

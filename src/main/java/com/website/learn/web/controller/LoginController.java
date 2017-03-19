@@ -1,8 +1,9 @@
 package com.website.learn.web.controller;
 
 import com.website.learn.bean.bo.LoginInfo;
+import com.website.learn.bean.bo.UserInfo;
 import com.website.learn.service.LoginService;
-import com.website.learn.service.RsaService;
+import com.website.learn.service.SecurityService;
 import com.website.learn.web.controller.base.BaseController;
 import com.website.learn.web.result.JsonResult;
 import org.slf4j.Logger;
@@ -12,9 +13,6 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 
 /**
@@ -30,10 +28,11 @@ public class LoginController extends BaseController {
     private static final Logger LOGGER = LoggerFactory.getLogger(LoginController.class);
 
     @Autowired
-    RsaService rsaService;
+    SecurityService securityService;
 
     @Autowired
     LoginService loginService;
+
     /***
      * 登录
      *
@@ -41,12 +40,20 @@ public class LoginController extends BaseController {
      */
     @ResponseBody
     @RequestMapping("/signIn")
-    public JsonResult login(HttpServletRequest request, HttpServletResponse response) {
-
-        //// TODO: 2017/3/19
-        loginService.login();
-
-        return new JsonResult();
+    public JsonResult login(LoginInfo loginInfo) {
+        checkArgument(loginInfo);
+        try {
+            //解密数据
+            UserInfo userInfo = securityService.decoded(loginInfo);
+            //验证用户名和密码
+            boolean isExist = loginService.login(userInfo);
+            if (isExist){
+                return new JsonResult(0,"true");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return new JsonResult(1,"false");
     }
 
 

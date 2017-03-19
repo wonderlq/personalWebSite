@@ -1,11 +1,14 @@
 package com.website.learn.service;
 
+import com.website.learn.bean.bo.LoginInfo;
+import com.website.learn.bean.bo.UserInfo;
+
 /**
  * @author dell
  * @since 1.0.0
  * Created On 2017-03-16 00:09
  */
-public interface RsaService {
+public interface SecurityService {
 
     /**
      * 获取公钥
@@ -17,7 +20,8 @@ public interface RsaService {
     /**
      * 解密
      * @param txt
-     * @return
+     * @return UserInfo 用户信息
      */
-    String decoded(String txt);
+    UserInfo decoded(LoginInfo txt);
+
 }
