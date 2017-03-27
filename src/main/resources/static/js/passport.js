@@ -23,6 +23,9 @@ function sendUserInfo(data) {
     $.ajax({
         type: "post",
         url: 'login/signIn',
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader("Authorization", "true");
+        },
         data: data,
         async: false,
         success: function (result) {
@@ -44,10 +47,8 @@ function encryptData(keys,name,password) {
     encrypt.setPublicKey(keys.data.publicKey);
     var encryptedName = encrypt.encrypt(name);
     var encryptedPassword = encrypt.encrypt(password);
-    console.info("name:"+name+",password:"+password);
     userInfo.userName = encryptedName;
     userInfo.password = encryptedPassword;
-    console.info("encrypted name:"+encryptedName+",encrypted password:"+encryptedPassword);
     userInfo.time = keys.data.fileKey;
     userInfo.publicKey = keys.data.publicKey;
     return userInfo;

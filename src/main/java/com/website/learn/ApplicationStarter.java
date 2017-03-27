@@ -22,7 +22,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @SpringBootApplication
 @ImportResource("classpath*:spring*.xml")
-/*@MapperScan("com.website.learn.dao.mapper")*/
+@MapperScan("com.website.learn.dao.dal.mapper")
 /*@EnableTransactionManagement*/
 public class ApplicationStarter {
 

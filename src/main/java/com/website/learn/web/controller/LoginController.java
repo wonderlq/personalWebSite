@@ -1,6 +1,7 @@
 package com.website.learn.web.controller;
 
 import com.website.learn.bean.bo.LoginInfo;
+import com.website.learn.bean.bo.UserContext;
 import com.website.learn.bean.bo.UserInfo;
 import com.website.learn.service.LoginService;
 import com.website.learn.service.SecurityService;
@@ -25,7 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/login")
 public class LoginController extends BaseController {
-    private static final Logger LOGGER = LoggerFactory.getLogger(LoginController.class);
+    private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 
     @Autowired
     SecurityService securityService;
@@ -42,6 +43,7 @@ public class LoginController extends BaseController {
     @RequestMapping("/signIn")
     public JsonResult login(LoginInfo loginInfo) {
         checkArgument(loginInfo);
+
         try {
             //解密数据
             UserInfo userInfo = securityService.decoded(loginInfo);
@@ -51,9 +53,10 @@ public class LoginController extends BaseController {
                 return new JsonResult(0,"true");
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.info("sign in error! {}",e);
+            return new JsonResult(2,"service error!");
         }
-        return new JsonResult(1,"false");
+        return new JsonResult(1,"userName or password error!");
     }
 
 
