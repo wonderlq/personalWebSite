@@ -74,7 +74,7 @@ public class SecurityServiceImpl implements SecurityService {
         String decodedName =
                 RsaUtil.RSADecode(privateKey, Base64Utils.decodeFromString(info.getUserName()));
 
-        return new UserInfo(decodedPw, decodedName);
+        return new UserInfo(decodedPw, decodedName,info.getFrom());
     }
 
     /**

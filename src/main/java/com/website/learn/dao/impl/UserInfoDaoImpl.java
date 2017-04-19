@@ -1,6 +1,7 @@
 package com.website.learn.dao.impl;
 
 import com.website.learn.bean.po.UserInfoPo;
+import com.website.learn.constant.ValueConstant;
 import com.website.learn.dao.UserInfoDao;
 import com.website.learn.dao.dal.mapper.UserInfoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +19,12 @@ public class UserInfoDaoImpl implements UserInfoDao {
     UserInfoMapper userInfoMapper;
 
     @Override
-    public Boolean exist(String name, String password) {
+    public long exist(String name, String password) {
         UserInfoPo userInfoPo = userInfoMapper.exist(name,password);
         if (userInfoPo != null){
-            return true;
+            return userInfoPo.getId();
         }
-        return false;
+        return ValueConstant.ERROR;
     }
 
     @Override

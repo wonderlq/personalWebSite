@@ -4,6 +4,7 @@ import com.website.learn.bean.bo.LoginInfo;
 import com.website.learn.bean.bo.UserInfo;
 
 /**
+ * 处理安全相关，加密解密
  * @author dell
  * @since 1.0.0
  * Created On 2017-03-16 00:09

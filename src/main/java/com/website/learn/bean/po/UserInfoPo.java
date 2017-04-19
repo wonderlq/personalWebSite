@@ -21,6 +21,8 @@ public class UserInfoPo {
     private Integer gender;
     private String email;
     private String phoneNum;
+    private Date birthDay;
+
 
     public UserInfoPo(String password, String name) {
         this.password = password;
@@ -28,5 +30,12 @@ public class UserInfoPo {
     }
 
     public UserInfoPo() {
+    }
+
+    public String buildCookieStr() {
+        StringBuilder sbuilder = new StringBuilder();
+        sbuilder.append("id:").append(id).append(";")
+                .append("name:").append(name).append(";");
+        return sbuilder.toString();
     }
 }

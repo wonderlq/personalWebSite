@@ -23,7 +23,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @SpringBootApplication
 @ImportResource("classpath*:spring*.xml")
 @MapperScan("com.website.learn.dao.dal.mapper")
-/*@EnableTransactionManagement*/
+@EnableTransactionManagement
 public class ApplicationStarter {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());

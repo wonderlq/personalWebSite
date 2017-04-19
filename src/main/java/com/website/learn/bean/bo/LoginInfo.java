@@ -6,7 +6,6 @@ package com.website.learn.bean.bo;
  * Created On 2017-03-19 02:17
  */
 public class LoginInfo {
-
     private String time;
 
     private String userName;
@@ -14,6 +13,11 @@ public class LoginInfo {
     private String password;
 
     private String publicKey;
+
+    /**
+     * 来源标志量
+     */
+    private String from;
 
     public String getTime() {
         return time;
@@ -45,5 +49,13 @@ public class LoginInfo {
 
     public void setPublicKey(String publicKey) {
         this.publicKey = publicKey;
+    }
+
+    public String getFrom() {
+        return from;
+    }
+
+    public void setFrom(String from) {
+        this.from = from;
     }
 }

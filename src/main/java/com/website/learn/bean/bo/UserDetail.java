@@ -16,5 +16,5 @@ public class UserDetail {
     private String userName;
     private String email;
     private Date birthDay;
-
+    private long id;
 }

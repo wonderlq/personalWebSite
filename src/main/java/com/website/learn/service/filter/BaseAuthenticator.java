@@ -7,13 +7,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * 用户名密码登录
+ * basic认证
+ *
  * @author dell
  * @since 1.0.0
  * Created On 2017-03-27 22:50
  */
 @Service
-public class BaseAuthenticator implements Authenticator{
+public class BaseAuthenticator implements Authenticator {
 
     @Override
     public UserDetail authenticate(HttpServletRequest request, HttpServletResponse response) {
@@ -26,11 +27,6 @@ public class BaseAuthenticator implements Authenticator{
         return authenticateUserByPassword(username, password);
     }
 
-    private UserDetail authenticateUserByPassword(String username, String password) {
-        //// TODO: 2017/3/27 验证用户身份
-        return null;
-    }
-
     private String parsePasswordFromAuthorizationHeader(String auth) {
         return "";
     }
@@ -38,6 +34,12 @@ public class BaseAuthenticator implements Authenticator{
     private String parseUsernameFromAuthorizationHeader(String auth) {
         return "";
     }
+
+    private UserDetail authenticateUserByPassword(String username, String password) {
+        //依据相应规则解析数据，获取相应的用户信息
+        return null;
+    }
+
 
     private String getHeaderFromRequest(HttpServletRequest request, String authorization) {
         return request.getHeader(authorization);

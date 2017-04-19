@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
  * Created On 2017-03-19 22:57
  */
 public interface UserInfoDao {
-    Boolean exist(String name, String password);
+    long exist(String name, String password);
 
     void saveNewUser(UserInfoPo userInfoPo);
 }

@@ -14,6 +14,13 @@ public class UserInfo {
     private int id;
     private String pw;
     private String name;
+    private String from;
+
+    public UserInfo(String pw, String name,String from) {
+        this.pw = pw;
+        this.name = name;
+        this.from=from;
+    }
 
     public UserInfo(String pw, String name) {
         this.pw = pw;
