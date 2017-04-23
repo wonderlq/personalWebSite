@@ -2,10 +2,8 @@ package com.website.learn.service.impl;
 
 import com.website.learn.bean.bo.UserInfo;
 import com.website.learn.constant.ValueConstant;
-import com.website.learn.dao.KeyDao;
-import com.website.learn.dao.UserInfoDao;
+import com.website.learn.dao.UserDao;
 import com.website.learn.service.LoginService;
-import com.website.learn.service.SecurityService;
 import com.website.learn.util.Md5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,15 +17,14 @@ import org.springframework.stereotype.Service;
 public class LoginServiceImpl implements LoginService {
 
     @Autowired
-    UserInfoDao userInfoDao;
+    UserDao userDao;
 
     @Override
     public long login(UserInfo userInfo) {
         try {
             //数据库中存储的是md5加密过
             String password = Md5Util.md5(userInfo.getPw());
-            //// TODO: 2017/4/20 依据from判断哪种认证方式，到对应的数据表里查找
-            return userInfoDao.exist(userInfo.getName(), password);
+            return userDao.exist(userInfo.getName(), password);
         } catch (Exception e) {
             e.printStackTrace();
         }

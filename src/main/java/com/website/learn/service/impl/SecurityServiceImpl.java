@@ -5,18 +5,12 @@ import com.website.learn.bean.po.KeyPairPo;
 import com.website.learn.bean.bo.UserInfo;
 import com.website.learn.dao.KeyDao;
 import com.website.learn.service.SecurityService;
-import com.website.learn.util.Md5Util;
 import com.website.learn.util.RsaUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Base64Utils;
-import sun.misc.BASE64Encoder;
-
-import java.io.UnsupportedEncodingException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
 import java.util.Map;
 

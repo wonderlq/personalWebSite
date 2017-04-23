@@ -23,9 +23,6 @@ function sendUserInfo(data) {
     $.ajax({
         type: "post",
         url: 'login/signIn',
-        beforeSend: function (xhr) {
-            xhr.setRequestHeader("Authorization", "true");
-        },
         data: data,
         async: false,
         success: function (result) {

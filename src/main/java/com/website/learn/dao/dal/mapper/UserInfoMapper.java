@@ -1,5 +1,6 @@
 package com.website.learn.dao.dal.mapper;
 
+import com.website.learn.bean.po.UserBasePo;
 import com.website.learn.bean.po.UserInfoPo;
 import org.apache.ibatis.annotations.Param;
 
@@ -12,5 +13,7 @@ public interface UserInfoMapper {
 
     UserInfoPo exist(@Param("name") String name, @Param("password") String password);
 
-    void saveNewUser(@Param("userInfoPo") UserInfoPo userInfoPo);
+    long saveNewUser(@Param("userInfoPo") UserInfoPo userInfoPo);
+
+    void saveNewUserBase(UserBasePo userBasePo);
 }

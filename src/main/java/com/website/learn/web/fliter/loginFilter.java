@@ -7,6 +7,8 @@ import com.website.learn.service.filter.Authenticator;
 import com.website.learn.bean.bo.UserContext;
 import com.website.learn.service.filter.BaseAuthenticator;
 import com.website.learn.service.filter.LocalAuthenticator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -28,7 +30,7 @@ import java.util.List;
  */
 @Component
 public class loginFilter implements Filter {
-
+    private static final Logger logger = LoggerFactory.getLogger(loginFilter.class);
     @Autowired
     BaseAuthenticator baseAuth;
     @Autowired
@@ -38,7 +40,7 @@ public class loginFilter implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        whiteList = Lists.newArrayList("get_key", "/login.html");
+        whiteList = Lists.newArrayList("get_key", "/login.html","/login");
     }
 
     @Override
@@ -49,7 +51,10 @@ public class loginFilter implements Filter {
         //白名单过滤
         if (!isExcludes(request.getRequestURI())) {
             userDetail = tryGetAuthenticatedUser(request, response);
-            new UserContext(userDetail);
+            if(userDetail == null){
+                logger.info("ha ha, catch u!");
+                return;
+            }
         }
 
         try (UserContext context = new UserContext(userDetail)) {
